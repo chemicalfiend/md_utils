@@ -1,0 +1,24 @@
+$atom:          1 $mol:    1 @atom: c3    0.100000   -4.891000    0.237000    0.208000
+$atom:          2 $mol:    1 @atom: hc    0.200000   -4.105000   -0.082000    0.896000
+$atom:          3 $mol:    1 @atom: c3    0.200000   -4.415000    1.387000   -0.648000
+$atom:          4 $mol:    1 @atom: hc    0.200000   -5.167000   -0.618000   -0.415000
+$atom:          5 $mol:    1 @atom: hc    0.200000   -5.765000    0.528000    0.794000
+$atom:          6 $mol:    1 @atom: hc    0.300000   -4.329000    4.019000   -1.693000
+$atom:          7 $mol:    1 @atom: hc    0.040000   -3.268000    4.554000   -0.382000
+$atom:          8 $mol:    1 @atom: c3    0.010000   -4.019000    2.550000   -0.149000
+$atom:          9 $mol:    1 @atom: hc   -0.100000   -2.669000    3.409000   -1.591000
+$atom:         10 $mol:    1 @atom: c3   -0.001000   -3.543000    3.700000   -1.005000
+$atom:         11 $mol:    1 @atom: hc    0.110000   -4.411000    1.219000   -1.723000
+$atom:         12 $mol:    1 @atom: hc    0.101000   -4.024000    2.717000    0.926000
+$bond:          1 $atom:          1 $atom:          2
+$bond:          2 $atom:          1 $atom:          3
+$bond:          3 $atom:          1 $atom:          4
+$bond:          4 $atom:          1 $atom:          5
+$bond:          5 $atom:          3 $atom:          8
+$bond:          6 $atom:          3 $atom:          8
+$bond:          7 $atom:          3 $atom:         11
+$bond:          8 $atom:          6 $atom:         10
+$bond:          9 $atom:          7 $atom:         10
+$bond:         10 $atom:          8 $atom:         10
+$bond:         11 $atom:          8 $atom:         12
+$bond:         12 $atom:          9 $atom:         10
