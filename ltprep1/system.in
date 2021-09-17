@@ -1,0 +1,25 @@
+units real
+atom_style full
+
+
+# ----------------- Init Section -----------------
+
+include "system.in.init"
+
+
+# ----------------- Atom Definition Section -----------------
+
+read_data "system.data"
+
+# ----------------- Settings Section -----------------
+
+include "system.in.settings"
+
+
+# ----------------- Run Section -----------
+
+fix all nvt temp 300.0 300.0 100.0 
+
+minimize 1.0e-5 1.0e-7 1000 10000
+run   50000
+

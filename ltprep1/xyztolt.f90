@@ -1,11 +1,13 @@
+! Programme to prepare an lt moltemplate file from an xyz file of coordinates.
+
 program xyztolt
 
     implicit none
 
-    character(len=20) :: fname1
-    character(len=20) :: fname2
-	character(len=20) :: cfile
-    character(len=20) :: ofile
+    character(len=20) :: fname1		! Name of xyz file
+    character(len=20) :: fname2		! Name of antechamber force field file.
+	character(len=20) :: cfile		! File with charges
+    character(len=20) :: ofile		! Name of output file
     integer :: ntotatoms
     integer :: natoms
     integer :: cont
@@ -27,7 +29,7 @@ program xyztolt
 
     character(len=200) :: foo, foo1, foo2
 
-    integer :: i, j, k
+    integer :: i, j, k, l
 
     call getarg(1, fname1)
     call getarg(2, fname2)
@@ -47,6 +49,7 @@ program xyztolt
 	open(15,file=cfile, status='old')
 
     read(10,*) ntotatoms
+	read(10,*) foo
     read(12,*) foo1
     read(12,*) foo2
 
@@ -55,24 +58,32 @@ program xyztolt
     allocate(x(ntotatoms))
     allocate(y(ntotatoms))
     allocate(z(ntotatoms))
-	allocate(chrg(ntotatoms))
+	allocate(chrg(natoms))
 	allocate(iatom(ntotatoms))
 	allocate(jatom(ntotatoms))
-    allocate(id(ntotatoms))
+    allocate(id(natoms))
 
     cont = 0
 
     !fprintf(fo,'%s%d\t%s%d\t%s%s %f %f %f %f\n','$atom:',count,'$mol:',mol1,'@atom:',iddd, chrg(i), pl(1), pl(2), pl(3));
+	
+	do l = 1, natoms
+		read(15,*) foo, chrg(l)
+	end do
+
+	do l = 1, natoms
+		read(12,'(A)') line
+		id(l) = line(73:75)
+	end do
 
     do i = 1, nmol
         do j = 1, natoms
             cont = cont + 1
             read(10,*) foo, x(cont), y(cont), z(cont)
-            read(12,'(A)') line
-            id(cont) = line(73:75)
-			read(15,*) foo, chrg(cont)
-            write(20, '("$atom: ", i10, X, "$mol:", i5, X, "@atom: ", A2, X, f11.6, X,  f11.6, X, f11.6, X, f11.6)') cont, i, id(cont), chrg(cont), x(cont), y(cont), z(cont)
-        end do
+            ! write(20, '("$atom:", i10, X, "$mol:", i5, X, "@atom: ", A2, X, f11.6, X,  f11.6, X, f11.6, X, f11.6)') cont, i, id(j), chrg(j), x(cont), y(cont), z(cont)
+        	
+            write(20, *) "$atom:", cont, " $mol:", i, " @atom:", id(j), chrg(j), x(cont), y(cont), z(cont)
+		end do
     end do
 
 	

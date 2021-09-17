@@ -1,0 +1,11 @@
+import "fin.lt"
+
+write_once("Data Boundary") {
+
+	-69.33 69.33 xlo xhi
+	-69.33 69.33 ylo yhi
+	-50 300.33 zlo zhi
+
+}
+
+pndis = new Pndi[1].move(1,0,0) [1].move(0,1,0) [1].move(0,,0,1)
