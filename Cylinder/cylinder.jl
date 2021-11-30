@@ -4,7 +4,7 @@ Program to convert a large rectangular block into a cylinder
 
 =#
 
-radius = 50
+radius = 10
 thickness = 2
 height = 700
 
@@ -17,7 +17,7 @@ struct Atom
 end
 
 
-fi = open("supercell.xyz", "r")
+fi = open("supercell_shifted.xyz", "r")
 
 box = readlines(fi)
 
