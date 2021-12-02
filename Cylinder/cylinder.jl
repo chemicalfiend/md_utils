@@ -4,9 +4,9 @@ Program to convert a large rectangular block into a cylinder
 
 =#
 
-radius = 10
-thickness = 2
-height = 700
+radius = 25
+thickness = 5
+height = 200
 
 
 struct Atom
