@@ -44,11 +44,15 @@ for line in box
 	
 	q = x^2 + y^2
 	r2 = radius^2
-	rt2 = (radius - thickness)^2
+	
+	xb = radius + thickness
+
 
 	if (z >= -height/2 && z <= height/2)
-		if (q >= rt2 && q <= r2)
-			push!(atoms, Atom(type, x, y, z))
+		if (q >= r2)
+			if ( ((x <= xb) && (x >= -xb)) && ((y <= xb && y >= -xb)) )
+				push!(atoms, Atom(type, x, y, z))
+			end
 		end
 	end
 
