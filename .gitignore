@@ -1,2 +1,4 @@
-/Cylinder/supercell_shifted.xyz
-/Cylinder/supercell.xyz
+*.xyz
+
+*.xrd
+*.dat

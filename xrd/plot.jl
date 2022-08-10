@@ -1,4 +1,5 @@
 using Plots
+using LaTeXStrings
 
 include("movingaverage.jl")
 include("polynomialregression.jl")
@@ -18,9 +19,14 @@ function xrd_plot(filename)
 
     X = []
     Y = []
+    
+    λ = 1.541838
+    
     for line in lines
         tokens = split(line)
-        push!(X, parse(Float64, tokens[2]))
+        k = parse(Float64, tokens[2])
+        m = 4*π*sin(k * π/360)/λ
+        push!(X, m)
         push!(Y, parse(Float64, tokens[4]))
     end
     x = movingaverage(X, 5)
@@ -28,9 +34,9 @@ function xrd_plot(filename)
     
     f = poly(x, y, 7)
     
-    plot(x, f)
+    plot(x, f, xlab=L"Q (Å^{-1})")
 
-    savefig("xrdplot.png")
+    savefig("xrdplot-150.png")
 end
 
-xrd_plot("all-100.xrd")
+xrd_plot("all-150.xrd")
