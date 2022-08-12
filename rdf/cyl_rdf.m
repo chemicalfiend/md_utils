@@ -1,7 +1,4 @@
-% Code by Sarbani Ghosh
-% Feb. 19, 2014
-
-% This program calculates radial density profile of hydrogen
+% This program calculates radial density profile of PEDOT
 % molecules around a nanotube.
 
 clear all;
@@ -110,7 +107,7 @@ fclose(f1);
 f2 = fopen('pedottosrho-50.dat','w');
 
 disp(' ');
-disp('1. writing hydrogen density profile ...');
+disp('1. writing PEDOT density profile ...');
 disp(' ');
 
 for i = 1:nbin
