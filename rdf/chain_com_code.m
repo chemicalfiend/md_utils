@@ -6,20 +6,20 @@ ni=1;
 %%%%%%%%%%%%%%
 % ring(1,:)=[1 2 3 4 5 6];
 fo=fopen('ring.xyz','w');
- fii=fopen('../../../ATOMTYPE.INF','r');
- s1=fscanf(fii,'%s',4)
- for i=1:20
-    s1=fscanf(fii,'%s',1);
- rii=fscanf(fii,'%d',1)
+ fii=fopen('ATOMTYPE.INF','r');
+ %s1=fscanf(fii,'%s',4)
+ for i=1:12
+ rii=fscanf(fii,'%d',1);
  for j=1:5  % 5-membered ring
    l=fscanf(fii,'%d',3);
-ring(i,j)=l(3);
+   print('%s', l(1))
+   ring(i,j)=l(3);
    s1=fscanf(fii,'%s',1);
  end
  end
 %%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%
-f0 = fopen('../last.lammpstrj','r');
+f0 = fopen('last.lammpstrj','r');
 l1 = fscanf(f0, '%s', 2);
 tstep = fscanf(f0, '%d', 1);
 l2 = fscanf(f0, '%s', 4);
@@ -30,7 +30,7 @@ y = fscanf(f0, '%f %f',2);
 z = fscanf(f0, '%f %f',2);
 l4 = fscanf(f0, '%s', 8);
 fclose(f0);
-nc=250; %no. of chain
+nc=160; %no. of chain
 n_i=nc*ni; % no. of IONS
 bx = 2*x(2);
 by = 2*y(2);
@@ -61,12 +61,14 @@ for i = 1:nbin
       % binvol(i) = len*pi*(bhi(i)^2 - blo(i)^2);
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-fi=fopen('../../../0/final.xyz','r');
-n_poly=fscanf(fi,'%d',1) % excluding ions
-fclose(fi);
+%fi=fopen('final.xyz','r');
+%n_poly=fscanf(fi,'%d',1) % excluding ions
+%fclose(fi);
+
+n_poly = 25280
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 natoms=(n_poly/nc)
-f1 = fopen('../last.lammpstrj','r');
+f1 = fopen('last.lammpstrj','r');
 disp(' ');
 disp('reading trajectory file ...');
 disp('sample #      ');
