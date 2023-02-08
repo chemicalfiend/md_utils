@@ -1,0 +1,50 @@
+reset
+set key
+show key
+set termoption enhanced
+set encoding iso_8859_1 
+set border lw 1
+
+#set key right bottom # below 
+#set key font ",20"
+#set key spacing 1
+set key samplen 1
+set key left top #left box 1 
+#set key width -1.8
+#set logscale x
+#set logscale y
+set xlabel "{/Helvetica-Italic q (\305 ^{-1})}"
+set ylabel "{/Helvetica Intensity (arb. units)}" offset 1
+#set y2label "{/Helvetica-Italic g_S_i_N_P_-_P_3_H_T (r)}"
+#set y2tics 1
+set ytics 1 
+set xtics 0.4
+#set yrange[0.0:0.55]
+set xrange[0.35:2.15]
+#set y2range[0:1.4]
+ f(x) = m*x + b
+#set ytics add ("1" 0.55)
+set style line 1 lt 10 pt 13 ps 1.2 lc rgb "coral" lw 6
+set style line 2 lt 5 pt 7 ps 1.2 lc rgb '#DC143C' lw 6
+set style line 3 lt 3 pt 9 ps 1.2 lc rgb "brown" lw 6
+set style line 4 lt 4 pt 15 ps 1.2 lc rgb "#DEB887" lw 6
+set style line 6 lt 7 pt 7 ps 1.2 lc rgb "#6A5ACD" lw 6
+set style line 5 lt 1 pt 13 ps 1.2 lc rgb "#556B2A" lw 6
+set style line 7 lt 1 pt 13 ps 1.2 lc rgb "#A52A2A" lw 6
+set style line 8 lt 1 pt 13 ps 1.2 lc rgb "#000000" lw 6
+
+p 'all-slab-tos.xrd' u (4*pi*sin($2*pi/360)/1.541838):($4*92) w lp smooth sb  ls 4 t ''
+rep 'all-slab-pss.xrd' u (4*pi*sin($2*pi/360)/1.541838):($4*98) w lp smooth sb ls 1 t '10 nm'
+#rep 'all-150.xrd' u (4*pi*sin($2*pi/360)/1.541838):($4*100) w lp smooth sb ls 2 t '15 nm'
+#rep 'all-200.xrd' u (4*pi*sin($2*pi/360)/1.541838):($4*101) w lp smooth sb ls 3 t '20 nm'
+#rep '10/all1.xrd' u (4*pi*sin($2*pi/360)/1.541838):($4*105) w lp smooth sb ls 3 t 'n_i=100%'
+#rep '../../6/comb2/xrd/all1.xrd' u (4*pi*sin($2*pi/360)/1.541838):($4*100) w lp smooth sb  ls 7 t 'n_i=6' # 'TVT4'
+ # 'TVT3'
+
+
+
+#rep 'tg_cal.dat' u 1:2 w lp ls 2 t 'calculated'
+#set terminal wxt size 350,262 enhanced font 'Verdana,10' persist
+set terminal postscript enhanced "Helvetica,28" color
+set output "xrd_slab.eps"
+rep

@@ -1,4 +1,8 @@
 *.xyz
-
+*.lammpstrj
+*.pdb
+*.eps
+*.png
 *.xrd
 *.dat
+*.data

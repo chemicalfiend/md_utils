@@ -4,7 +4,7 @@ include("polynomialregression.jl")
 
 function plot_rdf()
     
-    f = open("pedottosrho-50.dat", "r")
+    f = open("pedot.dat", "r")
 
     lines = readlines(f)
 
@@ -17,12 +17,12 @@ function plot_rdf()
         push!(y, parse(Float64, tokens[2]))
     end
 
-    X = movingaverage(x, 5)
-    Y = movingaverage(y, 5)
+    X = movingaverage(x, 10)
+    Y = movingaverage(y, 10)
 
-    f = poly(X, Y, 10)
+    f = poly(X, Y, 6)
 
-    plot(X, f)
+    plot(X, f, xlab="r(Å)", ylab="ρ(r)", grid=false, framestyle=:box)
     savefig("test.png")
 
 end

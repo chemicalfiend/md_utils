@@ -129,9 +129,9 @@ function rdf()
         x = cx[k]
         y = cy[k]
         z = cz[k]
-        write(xyz, "$x \t $y \t $z \n")
+        write(xyz, "1 $x \t $y \t $z \n")
     end
-
+    #=
     c1x = zeros(20)
     c1y = zeros(20)
     c1z = zeros(20)
@@ -185,6 +185,7 @@ function rdf()
         b = nct[i]/binvol[i]
         write(datFile, "$a $b \n")
     end
+    =#
 
     close(datFile)
     close(trj)

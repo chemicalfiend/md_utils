@@ -4,8 +4,8 @@ Program to convert a large rectangular block into a cylinder
 
 =#
 
-radius = 25
-thickness = 5
+radius = 50
+thickness = 4
 height = 200
 
 

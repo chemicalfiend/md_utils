@@ -1,0 +1,46 @@
+reset
+set key
+show key
+set termoption enhanced
+set encoding iso_8859_1 
+set border lw 1
+
+set key right top # right bottom
+set key font ",30"
+set tics font ", 30"
+
+#set key spacing 1
+set key samplen 1
+#set key left top left box 1 
+#set key width -1.8
+#set logscale x
+#set logscale y
+
+
+set terminal postscript enhanced "Helvetica,30" color
+set output "gofr_compare.eps"
+
+
+#set style line 1 lt 5 pt 13 ps 1.2 lc rgb "red" lw 5
+#set style line 2 lt 7 pt 7 ps 1.2 lc rgb 'orange' lw 5
+#set style line 3 lt 3 pt 9 ps 1.2 lc rgb 'green' lw 5	# #0000FF
+#set style line 4 lt 4 pt 15 ps 1.2 lc rgb "blue" lw 5
+#set style line 5 lt 1 pt 13 ps 1.2 lc rgb "magenta" lw 5
+set style line 5 lt 5 pt 13 ps 1.2 lc rgb "orange-red" lw 5
+set style line 3 lt 7 pt 7 ps 1.2 lc rgb 'plum' lw 5
+set style line 4 lt 4 pt 15 ps 1.2 lc rgb "skyblue" lw 5
+set style line 2 lt 3 pt 9 ps 1.2 lc rgb "blue" lw 5
+set style line 1 lt 1 pt 13 ps 1.2 lc rgb "forest-green" lw 5
+#set sample 25, 25
+set origin 0, 0 
+set size 1, 1
+set xlabel "{/Helvetica-Italic r (\305)}"
+set ylabel "{/Helvetica-Italic g(r)}"
+#set ytics 0.5
+#set yrange[0.0:150]
+set xrange [0.0:20]
+#set arrow from 4.2, graph 0 to 4.2, graph 1  nohead lt 0 lw 5
+p 'gofr-slab-tos.dat' u 1:($2/0.0048) w l ls 3 t 'PEDOT:Tos', 'gofr-slab-pss.dat' u 1:($2/0.0038) w l ls  4 t 'PEDOT:PSS'
+
+#p 'gofr-50-pss.dat' u 1:($2/0.0032) w l ls 3 t 'D=5', 'gofr-100-pss.dat' u 1:($2/0.0017) w l ls  4 t 'D=10', 'gofr-150-pss.dat' u 1:($2/0.0015) w l ls 2 t 'D=15',  'gofr-200-pss.dat' u 1:($2/0.0013) w l ls 1 t 'D=20' #, '../../../../tvt0/gofr/gofr_ali.dat' u 1:($2*0.96) w l s sb ls 5 t '0%'
+
